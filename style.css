@@ -1,3 +1,9 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
 .header {
     padding: 10px;
     margin: auto;
@@ -8,32 +14,84 @@
     font-family: Georgia, 'Times New Roman', Times, serif;
 }
 
-.burger {
-    display: block;
+.menu-btn {
+    position: relative;
+    display: flex;
     justify-content: center;
     align-items: center;
-    width: 60px;
-    height: 60px;
-    background-color: black;
+    width: 80px;
+    height: 80px;
+    cursor: pointer;
+    transition: all .5s ease-in-out;
+    /* border: 3px solid #fff; */
 }
 
-.line1 {
-    background-color: white;
-    width: 80%;
-    height: 5px;
-    margin: 5px auto;
+.menu-btn__burger {
+    width: 50px;
+    height: 6px;
+    background: white;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(255,101,47,.2);
+    transition: all 0.5s ease-in-out;
 }
 
-.line2 {
-    background-color: white;
-    width: 80%;
-    height: 5px;
-    margin: 5px auto;
+.menu-btn__burger::before,
+.menu-btn__burger::after {
+    content: '';
+    position: absolute;
+    width: 50px;
+    height: 6px;
+    background: white;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(255,101,47,.2);
+    transition: all 0.5s ease-in-out;
 }
 
-.line3 {
-    background-color: white;
-    width: 80%;
-    height: 5px;
-    margin: 5px auto;
+.menu-btn__burger::before {
+    transform: translateY(-16px);
 }
+
+.menu-btn__burger::after {
+    transform: translateY(16px);
+}
+
+/* ANIMATION */
+.menu-btn.open .menu-btn__burger {
+    transform: translateX(-50px);
+    background: transparent;
+    box-shadow: none;
+}
+
+.menu-btn.open .menu-btn__burger::before {
+    transform: rotate(45deg) translate(35px, -35px);
+}
+
+.menu-btn.open .menu-btn__burger::after {
+    transform: rotate(-45deg) translate(35px, 35px);
+}
+
+/* Hide the links inside the navigation menu (except for logo/home) */
+.header #myLinks {
+    display: none;
+  }
+  
+  /* Style navigation menu links */
+  .header a {
+    color: white;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 17px;
+    display: block;
+  }
+  
+  /* Add a grey background color on mouse-over */
+  .header a:hover {
+    background-color: #ddd;
+    color: black;
+  }
+  
+  /* Style the active link (or home/logo) */
+  .active {
+    background-color: #04AA6D;
+    color: white;
+  }
